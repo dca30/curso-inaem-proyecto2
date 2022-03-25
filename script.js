@@ -26,6 +26,11 @@ const renderCountry = (data, optionalClass = "") => {
   countryContainer.style.opacity = 1;
 };
 
+// fetch(url)
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((err) => console.log(err.message));
+
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then((response) => {
@@ -64,3 +69,16 @@ const getJSON = function (url, errMessage) {
     return response.json();
   });
 };
+
+const whereami = function (lat, lng) {
+  const url = `https://geocode.xyz/${lat},${lng}13.381?geoit=json`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      //obtener pais y llamar a getcountry
+      console.log(data);
+    })
+    .catch((err) => console.log(err.message, "***********"));
+};
+
+whereami(52.508, 13.381);
